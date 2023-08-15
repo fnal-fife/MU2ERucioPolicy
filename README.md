@@ -11,3 +11,6 @@ This is the Rucio policy package for MU2E.
 * `path_gen.py` - contains the MU2E SURL algorithm which currently queries the SAM metadata service to get required information on the file.
 * `permission.py` - permission functions for the policy package.
 * `schema.py` - schema functions and data for the policy package. Currently just a copy of the generic code with no MU2E-specific customisation.
+
+## More Information
+* https://rucio.cern.ch/documentation/operator/policy_packages
