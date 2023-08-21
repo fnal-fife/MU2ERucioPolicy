@@ -2,6 +2,7 @@
 import rucio
 import collections
 import os.path
+import hashlib
 
 FILE_FAMILIES = {
     "raw":{"prod":"phy-raw","user":"phy-raw","type":"data"},
