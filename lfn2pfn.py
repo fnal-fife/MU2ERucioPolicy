@@ -31,6 +31,7 @@ def lfn2pfn_MU2E(scope, name, rse, rse_attrs, protocol_attrs):
     # ====================
     from rucio.common.types import InternalScope
     from rucio.rse import rsemanager
+    from rucio.common.exception import DataIdentifierNotFound
 
     # check to see if PFN is already cached in Rucio's metadata system
     didclient = None
@@ -39,10 +40,16 @@ def lfn2pfn_MU2E(scope, name, rse, rse_attrs, protocol_attrs):
     if getattr(rsemanager, 'CLIENT_MODE', None):
         from rucio.client.didclient import DIDClient
         didclient = DIDClient()
-        didmd = didclient.get_metadata(internal_scope, name)
+        try:
+            didmd = didclient.get_metadata(internal_scope, name)
+        except:
+            pass
     if getattr(rsemanager, 'SERVER_MODE', None):
         from rucio.core.did import get_metadata
-        didmd = get_metadata(internal_scope, name)
+        try:
+            didmd = get_metadata(internal_scope, name)
+        except:
+            pass
 
     # if it is, just return it
     md_key = 'PFN_' + rse
