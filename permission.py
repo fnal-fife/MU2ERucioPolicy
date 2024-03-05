@@ -727,7 +727,9 @@ def perm_delete_replicas(issuer, kwargs, *, session: "Optional[Session]" = None)
     :param session: The DB session to use
     :returns: True if account is allowed, otherwise False
     """
-    return False
+    return _is_root(issuer)\
+        or has_account_attribute(account=issuer, key='admin', session=session)\
+        or rucio.core.scope.is_scope_owner(scope=kwargs['scope'], account=issuer, session=session)\
 
 
 def perm_update_replicas_states(issuer, kwargs, *, session: "Optional[Session]" = None):
