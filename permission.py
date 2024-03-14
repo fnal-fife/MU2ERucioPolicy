@@ -705,7 +705,8 @@ def perm_add_replicas(issuer, kwargs, *, session: "Optional[Session]" = None):
         or str(kwargs.get('rse', '')).endswith('MOCK')\
         or str(kwargs.get('rse', '')).endswith('LOCALGROUPDISK')\
         or _is_root(issuer)\
-        or rucio.core.scope.is_scope_owner(scope=kwargs['scope'], account=issuer, session=session)\
+        or has_account_attribute(account=issuer, key='production', session=session)\
+        or has_account_attribute(account=issuer, key='analysis', session=session)\
         or has_account_attribute(account=issuer, key='admin', session=session)
 
 
@@ -732,7 +733,8 @@ def perm_delete_replicas(issuer, kwargs, *, session: "Optional[Session]" = None)
     """
     return _is_root(issuer)\
         or has_account_attribute(account=issuer, key='admin', session=session)\
-        or rucio.core.scope.is_scope_owner(scope=kwargs['scope'], account=issuer, session=session)
+        or has_account_attribute(account=issuer, key='production', session=session)\
+        or has_account_attribute(account=issuer, key='analysis', session=session)\
 
 
 def perm_update_replicas_states(issuer, kwargs, *, session: "Optional[Session]" = None):
@@ -746,7 +748,8 @@ def perm_update_replicas_states(issuer, kwargs, *, session: "Optional[Session]" 
     """
     return _is_root(issuer)\
         or has_account_attribute(account=issuer, key='admin', session=session)\
-        or rucio.core.scope.is_scope_owner(scope=kwargs['scope'], account=issuer, session=session)\
+        or has_account_attribute(account=issuer, key='production', session=session)\
+        or has_account_attribute(account=issuer, key='analysis', session=session)\
 
 
 def perm_queue_requests(issuer, kwargs, *, session: "Optional[Session]" = None):
