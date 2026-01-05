@@ -8,6 +8,7 @@ FILE_FAMILIES = {
     "raw":{"prod":"phy-raw","user":"phy-raw","type":"data"},
     "rec":{"prod":"phy-rec","user":"usr-dat","type":"data"},
     "ntd":{"prod":"phy-ntd","user":"usr-dat","type":"data"},
+    "dqm":{"prod":"phy-ntd","user":"usr-dat","type":"data"},
     "ext":{"prod":None,     "user":"usr-dat","type":"data"},
     "rex":{"prod":None,     "user":"usr-dat","type":"data"},
     "xnt":{"prod":None,     "user":"usr-dat","type":"data"},
