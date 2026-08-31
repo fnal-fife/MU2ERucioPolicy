@@ -1,0 +1,7 @@
+[project]
+name = "mu2eruciopolicy"
+version = "0.1.0"
+description = "Rucio policy for MU2E"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = []
